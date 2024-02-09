@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiProtocol: 'https',
+  apiBaseUrl: 'api.mahwebdesign.com/api'
 };
