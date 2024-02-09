@@ -1,0 +1,90 @@
+<div class="container center-page">
+    <mat-card class="w-400">
+        <mat-card-header>
+            <mat-card-title>
+                Create Argument
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formGroup">
+                <div class="column">
+                    <mat-form-field>
+                            <mat-label>Argument Title</mat-label>
+                            <input 
+                            matInput
+                            required
+                            placeholder="Argument Title..."
+                            formControlName="argumentTitle">
+                        </mat-form-field>
+                    <div class="row space-between">
+                        <mat-form-field>
+                            <mat-label>Location</mat-label>
+                            <mat-select
+                            formControlName="location">
+                                <mat-option value="CC">Carson City</mat-option>
+                                <mat-option value="LAS">Las Vegas</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Docket Number</mat-label>
+                            <input 
+                            matInput
+                            required
+                            placeholder="Docket Number..."
+                            formControlName="docketNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="row space-between">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Date and Time</mat-label>
+                            <input 
+                            matInput 
+                            type="datetime-local" 
+                            placeholder="Start Date"
+                            formControlName="argumentDateTime">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Panel</mat-label>
+                            <mat-select>
+                                <mat-option value="SP">Southern Panel</mat-option>
+                                <mat-option value="NP">Northen Panel</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <section>
+                        <mat-label>Attending Justices</mat-label>
+                        <ul class="column">
+                            <mat-checkbox>
+                                J. Hardesty
+                            </mat-checkbox>
+                            <mat-checkbox>
+                                J. Stiglich
+                            </mat-checkbox>
+                            <mat-checkbox>
+                                J. Silver
+                            </mat-checkbox>
+                        </ul>
+                    </section>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Summary</mat-label>
+                        <textarea 
+                        matInput 
+                        formControlName="summary">
+                        </textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Issues</mat-label>
+                        <textarea 
+                        matInput 
+                        formControlName="issues"></textarea>
+                    </mat-form-field>
+                </div>
+            </form>
+            <button
+            mat-raised-button
+            color="primary"
+            (click)="submit()">
+                Save
+            </button>
+        </mat-card-content>
+    </mat-card>
