@@ -1,0 +1,106 @@
+<!-- <div class="container  center-page">
+        <mat-card class="w-400">
+        <mat-card-header>
+            <mat-card-title>
+                Event Information
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="column">
+            <mat-form-field>
+                <mat-label>Event Name</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Event Type</mat-label>
+                <mat-select>
+                    <mat-option value="COARecording">COA Recording</mat-option>
+                    <mat-option value="Synopses">Synopses</mat-option>
+                    <mat-option value="Decisions">Decisions</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <input 
+            #addFileInput 
+            [hidden]="true"
+            type="file" 
+            (change)="onFileChange(addFileInput.files)"/>
+
+            <div class="file-upload mb-20">
+                <button 
+                    type="button"
+                    mat-raised-button 
+                    color="primary" 
+                    class="upload-btn" 
+                    (click)="addFileInput.click()">
+                        <span>
+                            Upload File
+                        </span>
+                </button>
+                <span class="ml-10">
+                    {{fileName}}
+                </span>
+            </div>
+            <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+            </div>
+            
+        </mat-card-content>
+        </mat-card>
+</div> -->
+
+<form [formGroup]="form">
+    <div>
+        <mat-toolbar class="blue-background center-page">
+            <span class="span">
+                <h1 mat-dialog-title >Upload File</h1>
+            </span>
+        </mat-toolbar>
+    </div>
+    <div class="column pt-20">
+        <mat-form-field>
+            <mat-label>File Name</mat-label>
+            <input 
+            formControlName="name"
+            matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>File Type</mat-label>
+            <mat-select>
+                <mat-option value="COARecording">COA Recording</mat-option>
+                <mat-option value="Synopses">Synopses</mat-option>
+                <mat-option value="Decisions">Decisions</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <input 
+        #addFileInput 
+        [hidden]="true"
+        type="file" 
+        (change)="onFileChange(addFileInput.files)"/>
+        <button 
+            type="button"
+            mat-raised-button  
+            class="w-100 blue-background" 
+            (click)="addFileInput.click()">
+                <span>
+                    Upload File
+                </span>
+        </button>
+        <span class="ml-10">
+            {{fileName}}
+        </span>
+    </div>
+    <div class="row space-between pt-40">
+        <button
+        class="btn red-background"
+        mat-button
+        (click)="cancel()">
+            Cancel
+        </button>
+
+        <button
+        class="btn blue-background"
+        mat-button
+        (click)="submit()">
+            Save
+        </button>
+    </div>
+</form>

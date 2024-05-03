@@ -1,0 +1,80 @@
+<!-- <ng-template #loaded> -->
+    <form [formGroup]="form">
+        <div >
+            <mat-toolbar class="blue-background center-page">
+                <span class="span">
+                    <h1 mat-dialog-title >Edit User</h1>
+                </span>
+            </mat-toolbar>
+
+            <div class="edit-dialog pt-10" fxLayout="column" fxLayoutAlign="space-between center" >
+
+                <div class="row space-between">
+                    <mat-form-field class="w-170">
+                        <mat-label>First Name</mat-label>
+                        <input 
+                        matInput
+                        formControlName="first_name">
+                    </mat-form-field>
+
+                    <mat-form-field class="w-170">
+                        <mat-label>Last Name</mat-label>
+                        <input 
+                        matInput
+                        formControlName="last_name">
+                    </mat-form-field>
+                </div>
+
+                <div class="w-100">
+                    <mat-form-field class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input
+                        matInput
+                        type="email" 
+                        formControlName="email">
+                    </mat-form-field>
+                </div>
+
+                <div class="row space-between" >
+                    <mat-form-field class="w-170">
+                        <mat-label>Role</mat-label>
+                        <mat-select
+                        [value]="roleOption"
+                        matInput
+                        formControlName="role">
+                            <mat-option [value]="'ADMIN'">Admin</mat-option>
+                            <mat-option [value]="'USER'">User</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-170">
+                        <mat-label>Active</mat-label>
+                        <mat-select
+                        [value]="activeOption"
+                        matInput
+                        formControlName="active">
+                            <mat-option [value]="1">Active</mat-option>
+                            <mat-option [value]="0">Inactive</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="row space-between pt-20">
+                    <button
+                    class="red-background btn"
+                    mat-button
+                    (click)="cancel()">
+                        Cancel
+                    </button>
+                    <button
+                    class="btn blue-background"
+                    mat-button
+                    (click)="submit()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+<!-- </ng-template> -->

@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
+  role_admin: 'ADMIN',
+  role_user: 'USER',
 
   apiProtocol: 'http',
   apiBaseUrl: 'localhost:8000/api'
 
-  //apiProtocol: 'https',
-  //apiBaseUrl: 'api.mahwebdesign.com/api'
+  // apiProtocol: 'https',
+  // apiBaseUrl: 'api.mahwebdesign.com/api'
 };
 
 /*

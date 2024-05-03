@@ -1,0 +1,23 @@
+<mat-toolbar class="blue-background row space-between">
+    <span>
+        Supreme Court of Nevada - Event Manager
+    </span>
+    <span>
+        <button 
+        mat-button 
+        (click)="navigate('recordings')">
+            Recordings
+        </button>
+        <button 
+        mat-button
+        (click)="navigate('files')">
+            Files
+        </button>
+        <button 
+        mat-button
+        (click)="logout()">
+            Logout
+        </button>
+    </span>
+</mat-toolbar>
+<router-outlet></router-outlet>

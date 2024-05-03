@@ -1,0 +1,63 @@
+<div class="p-20">
+    <mat-toolbar class="row space-between light-background">
+        <h2>Events</h2>
+        <button
+        (click)="createEvent()"
+        mat-stroked-button>
+            Create Event
+        </button>
+    </mat-toolbar>
+    <mat-toolbar 
+    class="row space-between white-background mb-20">
+        <mat-form-field floatLabel="never">
+            <input 
+            debounce="500"
+            [(ngModel)]="search.search"
+            (ngModelChange)="getEvents()"
+            type="text"
+            matInput placeholder="Search">
+            <button *ngIf="search.search" matSuffix mat-icon-button aria-label="Clear" (click)="search.search=''; getEvents()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-paginator 
+        class="white-background"
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="getEvents($event)"
+        aria-label="Select page">
+        </mat-paginator>
+    </mat-toolbar>
+    <div *ngIf="isLoading" class="pt-100">
+        <mat-spinner [diameter]="105" class="mat-spinner"></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+        <div *ngFor="let event of events">
+            <mat-card class="mb-10">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ event.title }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        Docket Number: {{ event.docket_num }} <br>
+                        Date: {{ event.date_time | date:'short' }} <br>
+                        Location: {{ event.location }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <b>Summary:</b> {{ event.summary }} <br><br>
+                    <b>Issues:</b> {{ event.issues }}
+                </mat-card-content>
+                <mat-card-actions>
+                    <button 
+                    (click)="editEvent(event)"
+                    class="btn blue-background"
+                    mat-button>
+                        Edit
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

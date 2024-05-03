@@ -1,0 +1,148 @@
+<div>
+    <div>
+        <mat-toolbar class="blue-background center-page">
+            <span class="span">
+                <h1 mat-dialog-title >Edit {{ data.recordingType }}</h1>
+            </span>
+        </mat-toolbar>
+    </div>
+    <div class="column">
+        <mat-form-field class="w-100">
+                <mat-label>{{data.recordingType}} Title</mat-label>
+                <input 
+                matInput
+                required
+                placeholder="{{data.recordingType}} Title..."
+                [(ngModel)]="recording.title">
+            </mat-form-field>
+        <div class="row space-between">
+            <mat-form-field class="w-260">
+                <mat-label>Location</mat-label>
+                <input 
+                matInput
+                required
+                placeholder="Location..."
+                [(ngModel)]="recording.location">
+            </mat-form-field>
+            <mat-form-field class="w-260">
+                <mat-label>Docket Number</mat-label>
+                <input 
+                matInput
+                required
+                placeholder="Docket Number..."
+                [(ngModel)]="recording.docket_num">
+            </mat-form-field>
+        </div>
+        <div class="row space-between">
+            <mat-form-field class="w-260">
+                <mat-label>Recording Type</mat-label>
+                <mat-select
+                required
+                [(ngModel)]="recording.type">
+                    <mat-option [value]="'recording'">Recording</mat-option>
+                    <mat-option [value]="'coa_recording'">COA Recording</mat-option>
+                    <mat-option [value]="'public_hearing'">Public Hearing</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-260">
+                <mat-label>Audio Link</mat-label>
+                <input 
+                matInput
+                required
+                placeholder="Audio Link..."
+                [(ngModel)]="recording.link">
+            </mat-form-field>
+        </div>
+        <div class="row space-between">
+            <mat-form-field class="w-260">
+                <mat-label>Date</mat-label>
+                <input 
+                required
+                matInput 
+                type="string" 
+                placeholder="Start Date"
+                [(ngModel)]="recording.date">
+            </mat-form-field>
+            <mat-form-field class="w-260">
+                <mat-label>Time</mat-label>
+                <input 
+                required
+                matInput 
+                type="string" 
+                placeholder="Start Date"
+                [(ngModel)]="recording.time">
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Appearances</mat-label>
+            <textarea 
+            matInput 
+            [(ngModel)]="recording.appearances">
+            </textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Note</mat-label>
+            <textarea 
+            matInput 
+            [(ngModel)]="recording.note"></textarea>
+        </mat-form-field>
+    </div>
+    <div>
+        <div *ngFor="let item of items; let i=index">
+            <div *ngIf="item.active === 1">
+                <span class="audio-row">
+                    Audio Content {{i + 1}}
+                    <mat-icon
+                    class="clickable"
+                    (click)="deleteRow(item, i)">
+                        clear
+                    </mat-icon>
+                </span>
+                <div class="row space-between">
+                    <mat-form-field class="w-170">
+                        <mat-label>Start Time</mat-label>
+                        <input 
+                        [(ngModel)]="item.time"
+                        matInput
+                        placeholder="Start Time...">
+                    </mat-form-field>
+                    <mat-form-field class="w-170">
+                        <mat-label>Speaker</mat-label>
+                        <input 
+                        [(ngModel)]="item.speaker"
+                        matInput
+                        placeholder="Speaker...">
+                    </mat-form-field>
+                    <mat-form-field class="w-170">
+                        <mat-label>Note</mat-label>
+                        <input 
+                        [(ngModel)]="item.note"
+                        matInput
+                        placeholder="Note...">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button
+        class="mb-40 w-100 gray-btn"
+        mat-raised-button
+        (click)="addRow()">
+            Add Audio Content Row
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+        </button>
+    </div>
+    <div class="row space-between pt-20">
+        <button
+        class="red-background btn"
+        mat-button
+        (click)="cancel()">
+            Cancel
+        </button>
+        <button
+        class="btn blue-background"
+        mat-button
+        (click)="submit()">
+            Save
+        </button>
+    </div>
+</div>

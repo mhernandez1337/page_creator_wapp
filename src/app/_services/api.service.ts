@@ -15,17 +15,27 @@ export class ApiService {
     this.baseUrl = `${environment.apiProtocol}://${environment.apiBaseUrl}/`;
   }
 
-  get(uri: string, data: any = {}) {
-        let _params = new HttpParams();
+  get(uri: string, data: any = {}){
+     let options: any = {
+       withCredentials: true
+     };
+     if(data) {
+       options.params = data;
+     }
 
-        for (const property in data) {
-            _params = _params.append(property, data[property]);
-        }
+     return this.http.get(`${this.baseUrl}${uri}`, options);
+   }
 
-        return this.http.get(`${this.baseUrl}${uri}`, { params: _params, withCredentials: false });
-    }
+   post(uri: string, data: any = {}){
+     return this.http.post(`${this.baseUrl}${uri}`, data, {withCredentials: true});
+   }
 
-    post(uri: string, data: any = {}) {
-        return this.http.post(`${this.baseUrl}${uri}`, data, { withCredentials: false });
-    }
+   put(uri: string, data: any = {}){
+     return this.http.post(`${this.baseUrl}${uri}`,data);
+   }
+
+   delete(uri: string, data: any = {}){
+     return this.http.delete(`${this.baseUrl}${uri}`,data);
+   }
+
 }

@@ -1,0 +1,129 @@
+<div>
+    <div>
+        <mat-toolbar class="blue-background center-page">
+            <span class="span">
+                <h1 mat-dialog-title >Create {{ data.synosisType }}</h1>
+            </span>
+        </mat-toolbar>
+    </div>
+    <div class="column">
+        <mat-form-field class="w-100">
+            <mat-label>{{data.synosisType}} Title</mat-label>
+            <input 
+            matInput
+            required
+            placeholder="{{data.synosisType}} Title..."
+            [(ngModel)]="synopses.title">
+        </mat-form-field>
+        <div class="row space-between">
+            <mat-form-field class="w-260">
+                <mat-label>Date</mat-label>
+                <input 
+                required
+                matInput 
+                type="string" 
+                placeholder="Start Date"
+                [(ngModel)]="synopses.date">
+            </mat-form-field>
+            <mat-form-field class="w-260">
+                <mat-label>Synopses Type</mat-label>
+                <mat-select
+                required
+                [(ngModel)]="synopses.type">
+                    <mat-option [value]="'synopsis'">Synopses</mat-option>
+                    <mat-option [value]="'coa_synopsis'">COA Synopses</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div>
+        <div *ngFor="let item of items; let i=index">
+            <div *ngIf="item.active === 1">
+                <span class="audio-row">
+                    Docket {{i + 1}}
+                    <mat-icon
+                    class="clickable"
+                    (click)="deleteRow(item, i)">
+                        clear
+                    </mat-icon>
+                </span>
+                <div class="column">
+                    <mat-form-field class="w-100">
+                        <mat-label>Docket Title</mat-label>
+                        <input 
+                        matInput
+                        required
+                        placeholder="Docket {{i}} Title..."
+                        [(ngModel)]="item.title">
+                    </mat-form-field>
+                    <div class="row space-between">
+                        <mat-form-field class="w-260">
+                            <mat-label>Docket Number</mat-label>
+                            <input 
+                            required
+                            matInput 
+                            type="string" 
+                            placeholder="Docket Number"
+                            [(ngModel)]="item.docket_num">
+                        </mat-form-field>
+                        <mat-form-field class="w-260">
+                            <mat-label>Time</mat-label>
+                            <input 
+                            required
+                            matInput 
+                            type="string" 
+                            placeholder="Time"
+                            [(ngModel)]="item.time">
+                        </mat-form-field>
+                    </div>
+                    <div class="row space-between">
+                        <mat-form-field class="w-260">
+                            <mat-label>Location</mat-label>
+                            <input 
+                            required
+                            matInput 
+                            type="string" 
+                            placeholder="Location"
+                            [(ngModel)]="item.location">
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Summary</mat-label>
+                        <textarea 
+                        matInput 
+                        [(ngModel)]="item.summary">
+                        </textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Panel</mat-label>
+                        <textarea 
+                        matInput 
+                        [(ngModel)]="item.panel">
+                        </textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button
+        class="mb-40 w-100 gray-btn"
+        mat-raised-button
+        (click)="addRow()">
+            Add Docket
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+        </button>
+    </div>
+    <div class="row space-between pt-20">
+        <button
+        class="red-background btn"
+        mat-button
+        (click)="cancel()">
+            Cancel
+        </button>
+        <button
+        class="btn blue-background"
+        mat-button
+        (click)="submit()">
+            Save
+        </button>
+    </div>
+</div>

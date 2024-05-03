@@ -1,0 +1,75 @@
+<div class="p-20">
+    <mat-toolbar class="row space-between light-background">
+        <h2>Files</h2>
+        <button
+        (click)="createFile()"
+        mat-stroked-button>
+            Upload File
+        </button>
+    </mat-toolbar>
+    <mat-toolbar 
+    class="row space-between white-background mb-20">
+        <mat-form-field floatLabel="never">
+            <input 
+            debounce="500"
+            [(ngModel)]="search.search"
+            (ngModelChange)="getFiles()"
+            type="text"
+            matInput placeholder="Search">
+            <button *ngIf="search.search" matSuffix mat-icon-button aria-label="Clear" (click)="search.search=''; getFiles()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-paginator 
+        class="white-background"
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="getFiles($event)"
+        aria-label="Select page">
+        </mat-paginator>
+    </mat-toolbar>
+    <div *ngIf="isLoading" class="pt-100">
+        <mat-spinner [diameter]="105" class="mat-spinner"></mat-spinner>
+    </div>
+    <table *ngIf="!isLoading" mat-table [dataSource]="files" class="w-100">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a class="text-primary wp-nowrap" (click)="editFile(element)">
+                    {{element.name}}
+                    <mat-icon class="va-middle">edit</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="path">
+            <th mat-header-cell *matHeaderCellDef> Preview </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a target="_blank" [href]="element.path">
+                    Preview
+                </a>
+             </td>
+        </ng-container>
+
+        <!-- Role Column -->
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

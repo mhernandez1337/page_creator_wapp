@@ -1,0 +1,96 @@
+    <form [formGroup]="form">
+        <div>
+            <mat-toolbar class="blue-background center-page">
+                <span class="span">
+                    <h1 mat-dialog-title >Create Event</h1>
+                </span>
+            </mat-toolbar>
+        </div>
+        <div class="column">
+            <mat-form-field class="w-100">
+                    <mat-label>Event Title</mat-label>
+                    <input 
+                    matInput
+                    required
+                    placeholder="Argument Title..."
+                    formControlName="title">
+                </mat-form-field>
+            <div class="row space-between">
+                <mat-form-field class="w-170">
+                    <mat-label>Location</mat-label>
+                    <mat-select
+                    formControlName="location">
+                        <mat-option value="CC">Carson City</mat-option>
+                        <mat-option value="LAS">Las Vegas</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-170">
+                    <mat-label>Docket Number</mat-label>
+                    <input 
+                    matInput
+                    required
+                    placeholder="Docket Number..."
+                    formControlName="docket_number">
+                </mat-form-field>
+            </div>
+            <div class="row space-between">
+                <mat-form-field appearance="fill" class="w-170">
+                    <mat-label>Date and Time</mat-label>
+                    <input 
+                    matInput 
+                    type="datetime-local" 
+                    placeholder="Start Date"
+                    formControlName="date">
+                </mat-form-field>
+                <mat-form-field class="w-170">
+                    <mat-label>Panel</mat-label>
+                    <mat-select>
+                        <mat-option value="SP">Southern Panel</mat-option>
+                        <mat-option value="NP">Northen Panel</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <section>
+                <mat-label>Attending Justices</mat-label>
+                <ul class="column">
+                    <mat-checkbox>
+                        J. Hardesty
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        J. Stiglich
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        J. Silver
+                    </mat-checkbox>
+                </ul>
+            </section>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Summary</mat-label>
+                <textarea 
+                matInput 
+                formControlName="summary">
+                </textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Issues</mat-label>
+                <textarea 
+                matInput 
+                formControlName="issues"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="row space-between pt-20">
+            <button
+            class="red-background btn"
+            mat-button
+            (click)="cancel()">
+                Cancel
+            </button>
+            <button
+            class="btn blue-background"
+            mat-button
+            (click)="submit()">
+                Save
+            </button>
+        </div>
+    </form>
+
