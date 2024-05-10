@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
       } else {
         // success
         if (response.data.user.role && response.data.user.role == environment.role_admin) {
-          this.router.navigate(['/admin/arguments']);
+          this.router.navigate(['/admin/recordings']);
         } else if (response.data.user.role && response.data.user.role == environment.role_user) {
-          this.router.navigate([`/user/arguments`]);
+          this.router.navigate([`/user/recordings`]);
         } else {
           this.apiError = 'An error occurred';
         }

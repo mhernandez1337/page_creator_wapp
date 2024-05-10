@@ -19,7 +19,7 @@ export class UserLayoutComponent implements OnInit {
   }
 
   navigate(page:string) {
-    this.router.navigate([`admin/${page}`]);
+    this.router.navigate([`user/${page}`]);
   }
 
   logout(){

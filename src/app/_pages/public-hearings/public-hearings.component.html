@@ -63,10 +63,10 @@
         <ng-container matColumnDef="docket_num">
             <th mat-header-cell *matHeaderCellDef> Docket Num. </th>
             <td mat-cell *matCellDef="let element"> 
-                <span *ngIf="element.recording[0].docket_num">
-                    {{element.recording[0].docket_num}} 
+                <span *ngIf="element.recording.docket_num">
+                    {{element.recording.docket_num}} 
                 </span>
-                <span *ngIf="!element.recording[0].docket_num">
+                <span *ngIf="!element.recording.docket_num">
                     NA
                 </span>
             </td>
@@ -76,10 +76,10 @@
         <ng-container matColumnDef="location">
             <th mat-header-cell *matHeaderCellDef> Location </th>
             <td mat-cell *matCellDef="let element"> 
-                <span *ngIf="element.recording[0].location">
-                    {{element.recording[0].location}} 
+                <span *ngIf="element.recording.location">
+                    {{element.recording.location}} 
                 </span>
-                <span *ngIf="!element.recording[0].location">
+                <span *ngIf="!element.recording.location">
                     NA
                 </span>
             </td>
